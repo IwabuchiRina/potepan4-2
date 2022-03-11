@@ -1,0 +1,16 @@
+<h2>検索結果：<%= @rooms.size %>件</h2>
+
+<div class="row">
+  <% @rooms.each do |room| %>
+    <div class="col-3">
+      <div class="card" style="width: 18rem;">
+        <img class="card-img-top" src="<%= room.image.url %>" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title"><%= room.name %></h5>
+          <p class="card-text"><%= room.address %></p>
+          <a href="/rooms/<%= room.id %>" class="btn btn-primary">チェックする</a>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

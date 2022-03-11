@@ -1,0 +1,14 @@
+<div class="sample-box">
+<img src="/top.jpg">
+<div class="good">
+    <div class="card">
+  <div class="card-body">
+    <%= form_with url: '/rooms', method: :get do |form|%>
+      <h5 class="card-title">新しい旅にチャレンジしよう</h5>
+      <%= form.text_field :address, placeholder: '東京' %>
+      <button class="btn btn-primary">探す</button>
+    <% end %>
+  </div>
+    </div>
+  </div>
+</div>

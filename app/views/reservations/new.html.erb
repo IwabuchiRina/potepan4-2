@@ -1,0 +1,38 @@
+<h2>予約内容確認</h2>
+
+<%= form_with model: @reservation, local: true, data: { turbo: false } do |form|%>
+  <%= render 'layouts/error_messages', model: form.object %>
+  <table width="500">
+        <tr>
+          <th>開始日</th>
+          <td><%= form.date_field :start_date %></td>
+        </tr>
+        <tr>
+          <th>終了日</th>
+            <td><%= form.date_field :end_date %></td>
+        </tr>
+        <tr>
+          <th>人数</th>
+          <td><%= form.text_field :people %></td>
+        </tr>
+        <tr>
+          <th>使用日数</th>
+          <td><%= @day %>日</td>
+        </tr>
+        <tr>
+          <th>人数</th>
+          <td><%= @reservation.people %>人</td>
+          <%= form.hidden_field :people %>
+        </tr>
+        <tr>
+          <th>合計金額</th>
+          <td><%= @reservation.price %></td>
+          <%= form.hidden_field :price %>
+          <%= form.hidden_field :room_id %>
+        </tr>
+  </table>
+  <p>上記内容でよろしければ「予約を確定」を押してください</p>
+  <br>
+  <button class="btn btn-primary">予約を確定</button>
+  <a class="btn btn-secondary" href="/rooms/<%= @reservation.room_id %>">ルーム詳細に戻る</a>
+<% end %>
