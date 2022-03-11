@@ -1,0 +1,22 @@
+<h2>登録済みルーム一覧</h2>
+
+<table border="1" width="900">
+  <thead>
+    <th>ルーム画像</th>
+    <th>ルーム名</th>
+    <th>ルーム紹介</th>
+    <th>料金</th>
+    <th>作成日</th>
+  </thead>
+  <tbody>
+  <% @rooms.each do |room| %>
+      <tr>
+        <td><img src="<%= room.image.url %>"></td>
+        <td><a href="/rooms/<%= room.id %>"><%= room.name %></a></td>
+        <td><%= room.introduce %></td>
+        <td>￥<%= room.price %></td>
+        <td><%= room.created_at.strftime('%Y/%m/%d') %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

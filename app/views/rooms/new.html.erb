@@ -1,0 +1,30 @@
+<h2>ルーム情報登録</h2>
+
+<%= form_with model: @room, local: true, data: { turbo: false } do |form|%>
+  <%= render 'layouts/error_messages', model: form.object %>
+  <table width="500">
+    <tr>
+      <th>ルーム名
+      </th>
+      <td><%= form.text_field :name %></td>
+    </tr>
+    <tr>
+      <th>ルーム紹介</th>
+      <td><%= form.text_area :introduce %></td>
+    </tr>
+    <tr>
+      <th>料金</th>
+      <td><%= form.text_field :price %></td>
+    </tr>
+    <tr>
+      <th>住所</th>
+      <td><%= form.text_field :address %></td>
+    </tr>
+    <tr>
+      <th>ルーム画像</th>
+      <td><%= form.file_field :image %></td>
+    </tr>
+  </table>
+  <br>
+  <button>登録</button>
+<% end %>

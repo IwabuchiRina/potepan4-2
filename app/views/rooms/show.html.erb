@@ -1,0 +1,41 @@
+
+<div class="row">
+  <div class="col-sm-8">
+    <img src="<%= @room.image.url %>">
+
+    <p><%= @room.name %></p>
+    <p><%= @room.address %></p>
+    <hr>
+    <p><%= @room.introduce %></p>
+
+  </div>
+  <div class="col-sm-4">
+    <div class="card">
+  <div class="card-body">
+    <%= form_with url: '/reservations/new', method: :get do |form|%>
+      <h5 class="card-title">￥<%= @room.price %> / 日</h5>
+      <table>
+        <tr>
+          <th>開始日</th>
+          <td><%= form.date_field :start_date %></td>
+        </tr>
+        <tr>
+          <th>終了日</th>
+            <td><%= form.date_field :end_date %></td>
+        </tr>
+        <tr>
+          <th>人数</th>
+          <td><%= form.text_field :people %></td>
+        </tr>
+      </table>
+      <input type="hidden" name="room_id" value="<%= @room.id %>" />
+        <% if user_signed_in? %>
+      <button class="btn btn-primary">予約する</button>
+        <% else %>
+          <%= link_to "ログイン", new_user_session_path, class: 'btn btn-primary' %>
+        <% end %>
+    <% end %>
+  </div>
+    </div>
+  </div>
+</div>
